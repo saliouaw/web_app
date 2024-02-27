@@ -133,13 +133,13 @@
         var regionStyle = { "color": "black", "weight": 2, "opacity": 1 };
 
         //Inserer les fichiers GeoJson
+        var departement = L.geoJson(departement, { style: departementStyle }).addTo(map);
         var region = L.geoJson(region, { 
             style: regionStyle,
             onEachFeature: function(feature, layer) {
                 layer.bindPopup('<p>Région: ' + feature.properties.reg + '</p>');
             }
         }).addTo(map);
-        var departement = L.geoJson(departement, { style: departementStyle }).addTo(map);
         var chemin_fer = L.geoJson(chemin_fer, { style: Chemin_ferStyle }).addTo(map);
 
         //Inserer les fonds de carte dans le controle de couche
@@ -152,8 +152,8 @@
 
         //Inserer les couches dans le controle de couche
         var Layer = {
-            "Région": region,
             "Département": departement,
+            "Région": region,
             "Chemin de fer": chemin_fer
         };
 
